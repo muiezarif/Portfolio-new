@@ -33,7 +33,11 @@ const Home: NextPage = () => {
           new THREE.BoxGeometry(1, 1, 1),
           new THREE.SphereGeometry(0.7, 32, 32),
           new THREE.ConeGeometry(0.7, 1.5, 8),
-          new THREE.OctahedronGeometry(0.8)
+          new THREE.OctahedronGeometry(0.8),
+          new THREE.TetrahedronGeometry(0.9),
+          new THREE.TorusGeometry(0.6, 0.2, 8, 16),
+          new THREE.DodecahedronGeometry(0.7),
+          new THREE.IcosahedronGeometry(0.8)
         ];
 
         const materials = [
@@ -41,34 +45,72 @@ const Home: NextPage = () => {
             color: 0x3b82f6, 
             wireframe: true, 
             transparent: true, 
-            opacity: 0.3 
+            opacity: 0.4 
           }),
           new THREE.MeshBasicMaterial({ 
             color: 0x8b5cf6, 
             wireframe: true, 
             transparent: true, 
-            opacity: 0.2 
+            opacity: 0.3 
           }),
           new THREE.MeshBasicMaterial({ 
             color: 0x06b6d4, 
             wireframe: true, 
             transparent: true, 
+            opacity: 0.35 
+          }),
+          new THREE.MeshBasicMaterial({ 
+            color: 0x10b981, 
+            wireframe: true, 
+            transparent: true, 
             opacity: 0.25 
+          }),
+          new THREE.MeshBasicMaterial({ 
+            color: 0xf59e0b, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.3 
+          }),
+          new THREE.MeshBasicMaterial({ 
+            color: 0xef4444, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.2 
           })
         ];
 
         const meshes: THREE.Mesh[] = [];
-        for (let i = 0; i < 15; i++) {
+        const meshAnimations: { speed: number, direction: THREE.Vector3, rotationSpeed: THREE.Vector3 }[] = [];
+        
+        for (let i = 0; i < 35; i++) {
           const geometry = geometries[Math.floor(Math.random() * geometries.length)];
           const material = materials[Math.floor(Math.random() * materials.length)];
           const mesh = new THREE.Mesh(geometry, material);
           
-          mesh.position.x = (Math.random() - 0.5) * 20;
-          mesh.position.y = (Math.random() - 0.5) * 20;
-          mesh.position.z = (Math.random() - 0.5) * 20;
+          mesh.position.x = (Math.random() - 0.5) * 30;
+          mesh.position.y = (Math.random() - 0.5) * 25;
+          mesh.position.z = (Math.random() - 0.5) * 25;
+          
+          mesh.rotation.x = Math.random() * Math.PI * 2;
+          mesh.rotation.y = Math.random() * Math.PI * 2;
+          mesh.rotation.z = Math.random() * Math.PI * 2;
           
           scene.add(mesh);
           meshes.push(mesh);
+          
+          meshAnimations.push({
+            speed: 0.001 + Math.random() * 0.002,
+            direction: new THREE.Vector3(
+              (Math.random() - 0.5) * 0.01,
+              (Math.random() - 0.5) * 0.01,
+              (Math.random() - 0.5) * 0.01
+            ),
+            rotationSpeed: new THREE.Vector3(
+              (Math.random() - 0.5) * 0.02,
+              (Math.random() - 0.5) * 0.02,
+              (Math.random() - 0.5) * 0.02
+            )
+          });
         }
 
         camera.position.z = 5;
@@ -76,10 +118,32 @@ const Home: NextPage = () => {
         const animate = () => {
           requestAnimationFrame(animate);
           
+          const time = Date.now() * 0.001;
+          
           meshes.forEach((mesh, index) => {
-            mesh.rotation.x += 0.005 + index * 0.001;
-            mesh.rotation.y += 0.005 + index * 0.001;
-            mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.002;
+            const animation = meshAnimations[index];
+            
+            // Complex rotation
+            mesh.rotation.x += animation.rotationSpeed.x;
+            mesh.rotation.y += animation.rotationSpeed.y;
+            mesh.rotation.z += animation.rotationSpeed.z;
+            
+            // Floating movement
+            mesh.position.x += Math.sin(time + index * 0.5) * animation.direction.x;
+            mesh.position.y += Math.cos(time + index * 0.3) * animation.direction.y;
+            mesh.position.z += Math.sin(time * 0.7 + index * 0.2) * animation.direction.z;
+            
+            // Boundary checking - wrap around
+            if (mesh.position.x > 15) mesh.position.x = -15;
+            if (mesh.position.x < -15) mesh.position.x = 15;
+            if (mesh.position.y > 12) mesh.position.y = -12;
+            if (mesh.position.y < -12) mesh.position.y = 12;
+            if (mesh.position.z > 12) mesh.position.z = -12;
+            if (mesh.position.z < -12) mesh.position.z = 12;
+            
+            // Pulsing effect
+            const scale = 1 + Math.sin(time * 2 + index) * 0.1;
+            mesh.scale.set(scale, scale, scale);
           });
           
           renderer.render(scene, camera);
