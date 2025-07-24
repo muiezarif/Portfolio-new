@@ -1,7 +1,7 @@
 
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -13,6 +13,95 @@ const Home: NextPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('three').then((THREE) => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+
+        // Create floating geometric shapes
+        const geometries = [
+          new THREE.BoxGeometry(1, 1, 1),
+          new THREE.SphereGeometry(0.7, 32, 32),
+          new THREE.ConeGeometry(0.7, 1.5, 8),
+          new THREE.OctahedronGeometry(0.8)
+        ];
+
+        const materials = [
+          new THREE.MeshBasicMaterial({ 
+            color: 0x3b82f6, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.3 
+          }),
+          new THREE.MeshBasicMaterial({ 
+            color: 0x8b5cf6, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.2 
+          }),
+          new THREE.MeshBasicMaterial({ 
+            color: 0x06b6d4, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.25 
+          })
+        ];
+
+        const meshes: THREE.Mesh[] = [];
+        for (let i = 0; i < 15; i++) {
+          const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+          const material = materials[Math.floor(Math.random() * materials.length)];
+          const mesh = new THREE.Mesh(geometry, material);
+          
+          mesh.position.x = (Math.random() - 0.5) * 20;
+          mesh.position.y = (Math.random() - 0.5) * 20;
+          mesh.position.z = (Math.random() - 0.5) * 20;
+          
+          scene.add(mesh);
+          meshes.push(mesh);
+        }
+
+        camera.position.z = 5;
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          
+          meshes.forEach((mesh, index) => {
+            mesh.rotation.x += 0.005 + index * 0.001;
+            mesh.rotation.y += 0.005 + index * 0.001;
+            mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.002;
+          });
+          
+          renderer.render(scene, camera);
+        };
+
+        animate();
+
+        const handleResize = () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+          window.removeEventListener('resize', handleResize);
+          renderer.dispose();
+        };
+      });
+    }
+  }, []);
 
   const projects = [
     {
@@ -98,22 +187,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        <div className={styles.navContainer}>
-          <div className={styles.logo}>
-            <h2>Muiez Arif</h2>
-          </div>
-          <div className={styles.navLinks}>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <button onClick={openWhatsApp} className={styles.whatsappBtn}>
-              <i className="fab fa-whatsapp"></i>
-            </button>
-          </div>
-        </div>
-      </nav>
+      <canvas ref={canvasRef} className={styles.threeCanvas} />
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -128,7 +202,9 @@ const Home: NextPage = () => {
           </p>
           <div className={styles.heroButtons}>
             <a href="#projects" className={styles.btnPrimary}>View My Work</a>
-            <a href="#contact" className={styles.btnSecondary}>Get In Touch</a>
+            <button onClick={openWhatsApp} className={styles.whatsappBtn}>
+              <i className="fab fa-whatsapp"></i> WhatsApp
+            </button>
           </div>
         </div>
       </section>
