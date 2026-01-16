@@ -98,6 +98,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Muiez Arif - Freelance Software Engineer with 7+ years experience in Node.js, React.js, Next.js, React Native" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+    <div className="container">
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -265,6 +266,8 @@ const Home: NextPage = () => {
           </div>
         </div>
       </footer>
+          </div>
+
     </Layout>
   );
 };

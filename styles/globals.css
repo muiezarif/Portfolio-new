@@ -14,3 +14,40 @@ a {
 * {
   box-sizing: border-box;
 }
+.container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+p {
+  line-height: 1.7;
+}
+
+ul {
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

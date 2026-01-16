@@ -45,6 +45,62 @@ const Portfolio = () => {
       tech: "React Native",
       type: "Business App",
       details: "Retail store inventory management app with analytics and EPOS system for product sales."
+    },
+    {
+      title: "HealthTracker.me",
+      description: "Healthcare platform for providers + patient app with AI symptom logging",
+      tech: "Next.js, Node.js, Mobile App, AI, Apple HealthKit",
+      type: "Healthcare Platform",
+      details:
+        "Built a provider portal to manage patients and onboarding. Patients can log symptoms via mobile app while speaking to an AI agent, with Apple HealthKit integration."
+    },
+    {
+      title: "MyConscent",
+      description: "AI-powered legal document generator (real estate & agreements)",
+      tech: "Next.js, Node.js, AI",
+      type: "SaaS Web App",
+      details:
+        "Built a platform that generates legal documents using AI including real estate consent forms, NDAs, and other property-related legal templates."
+    },
+    {
+      title: "TheHomies",
+      description: "Community platform with social-media features + subscriptions and gifting",
+      tech: "Next.js, Node.js, MongoDB",
+      type: "Community Platform",
+      details:
+        "Developed a community platform with video posting, gifting, subscriptions, and modern social features."
+    },
+    {
+      title: "Saudia Lawyers Conference Website",
+      description: "Event website built for a Saudi client",
+      tech: "Next.js",
+      type: "Website",
+      details:
+        "Built the Saudia Lawyers Conference website for a Saudi client with modern responsive UI and event-focused structure."
+    },
+    {
+      title: "Hospital Management System",
+      description: "Internal hospital management platform for a Saudi client",
+      tech: "MERN Stack",
+      type: "Business System",
+      details:
+        "Built a hospital management system for internal workflows including patient records, admin operations, and staff processes."
+    },
+    {
+      title: "Property Sales & Rental Distribution Platform",
+      description: "Platform for managing property sales, rentals and distribution workflows",
+      tech: "MERN Stack",
+      type: "Web Platform",
+      details:
+        "Worked on a Saudi-based property platform focused on sales/rent workflows and distribution management."
+    },
+    {
+      title: "Kids Sports Learning App",
+      description: "Learning app for kids built for a German client",
+      tech: "Mobile App",
+      type: "Mobile App",
+      details:
+        "Developed and deployed a kids sports learning application for a German client."
     }
   ];
 
@@ -53,20 +109,23 @@ const Portfolio = () => {
       <Head>
         <title>Portfolio - Muiez Arif</title>
       </Head>
-      <section className={styles.sectionContainer}>
-        <h1 className={styles.pageTitle}>Portfolio</h1>
-        <div className={styles.projectsGrid}>
-          {projects.map((project, index) => (
-            <div key={index} className={styles.projectCard}>
-              <div className={styles.projectType}>{project.type}</div>
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-              <p className={styles.projectDescription}>{project.description}</p>
-              <p className={styles.projectDetails}>{project.details}</p>
-              <div className={styles.projectTech}>{project.tech}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className="container">
+
+        <section className={styles.sectionContainer}>
+          <h1 className={styles.pageTitle}>Portfolio</h1>
+          <div className={styles.projectsGrid}>
+            {projects.map((project, index) => (
+              <div key={index} className={styles.projectCard}>
+                <div className={styles.projectType}>{project.type}</div>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.description}</p>
+                <p className={styles.projectDetails}>{project.details}</p>
+                <div className={styles.projectTech}>{project.tech}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </Layout>
   );
 };
