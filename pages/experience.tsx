@@ -22,7 +22,7 @@ const Experience = () => {
     {
       company: "Freelance",
       role: "Software Engineer",
-      period: " 2024 – Present",
+      period: " 2020 – Present",
       description:
         "Working with multiple international clients to build production-grade web platforms and SaaS products.",
       points: [
@@ -36,22 +36,14 @@ const Experience = () => {
         "Created myconscent – AI-powered legal document generation platform",
         "Built healthtracker.me for healthcare providers with patient onboarding & AI symptom tracking",
         "Integrated Apple HealthKit & AI agents for patient symptom logging",
-      ],
-      location: "Remote",
-
-    },
-    {
-      company: "Freelance – Upwork & Fiverr",
-      role: "Full Stack Engineer (React.js / Next.js / Node.js)",
-      period: "Mar 2020 – Dec 2024",
-      location: "Remote",
-      points: [
         "Built and maintain Digitvl.com for independent artists.",
         "Integrated Stripe for subscriptions and one-time payouts.",
         "Developed and deployed a kids' sports learning app for a German client.",
         "Created full flow diagrams, use cases, and project architecture independently.",
         "Built admin dashboards, CRMs, booking systems, and more using MERN stack."
-      ]
+      ],
+      location: "Remote",
+
     },
     {
       company: "Extreme Commerce, Lahore",
