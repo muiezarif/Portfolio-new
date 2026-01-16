@@ -139,7 +139,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     .fontSize(10.5)
     .fillColor("#111827")
     .text(
-      "Full Stack Software Engineer with strong experience in building modern web and mobile products using Node.js, React, Next.js, React Native, and MongoDB. Skilled in shipping production features, improving performance, and delivering scalable systems end-to-end.",
+      "Full Stack Software Engineer with strong experience in building modern web and mobile products using Node.js, React, Next.js, React Native, Laravel, Django, Python, Postgres, SQL and MongoDB. Skilled in shipping production features, improving performance, and delivering scalable systems end-to-end.",
       { lineGap: 3 }
     );
 
@@ -150,7 +150,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     .fontSize(10.5)
     .fillColor("#111827")
     .text(
-      "Node.js • React.js • Next.js • MongoDB • REST APIs • Admin Dashboards • React Native • TypeScript • Production Debugging • Performance & Reliability",
+      "Node.js • React.js • Next.js • Laravel • Django • Python • MongoDB • REST APIs • Admin Dashboards • React Native • TypeScript • Production Debugging • Performance & Reliability",
       { lineGap: 3 }
     );
 
