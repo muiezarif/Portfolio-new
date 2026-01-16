@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
+import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
 const Experience = () => {
@@ -54,53 +54,50 @@ const Experience = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>Experience - Muiez Arif</title>
       </Head>
-      <Navbar />
-      <main className={styles.mainContent}>
-        <section className={styles.sectionContainer}>
-          <h1 className={styles.pageTitle}>Professional Experience</h1>
-          
-          <div className={styles.cvDownloadSection}>
-            <p>Looking for a detailed CV?</p>
-            <a href="#" className={styles.btnPrimary} onClick={(e) => {
-              e.preventDefault();
-              alert("In a production environment, this would download the PDF CV.");
-            }}>Download PDF CV</a>
-          </div>
+      <section className={styles.sectionContainer}>
+        <h1 className={styles.pageTitle}>Professional Experience</h1>
+        
+        <div className={styles.cvDownloadSection}>
+          <p>Looking for a detailed CV?</p>
+          <a href="#" className={styles.btnPrimary} onClick={(e) => {
+            e.preventDefault();
+            alert("In a production environment, this would download the PDF CV.");
+          }}>Download PDF CV</a>
+        </div>
 
-          <div className={styles.timeline}>
-            {experiences.map((exp, index) => (
-              <div key={index} className={styles.timelineItem}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <div className={styles.timelineHeader}>
-                    <h3 className={styles.experienceRole}>{exp.role}</h3>
-                    <span className={styles.experiencePeriod}>{exp.period}</span>
-                  </div>
-                  <h4 className={styles.experienceCompany}>{exp.company} | {exp.location}</h4>
-                  <ul className={styles.experienceList}>
-                    {exp.points.map((point, i) => (
-                      <li key={i}>{point}</li>
-                    ))}
-                  </ul>
+        <div className={styles.timeline}>
+          {experiences.map((exp, index) => (
+            <div key={index} className={styles.timelineItem}>
+              <div className={styles.timelineDot}></div>
+              <div className={styles.timelineContent}>
+                <div className={styles.timelineHeader}>
+                  <h3 className={styles.experienceRole}>{exp.role}</h3>
+                  <span className={styles.experiencePeriod}>{exp.period}</span>
                 </div>
+                <h4 className={styles.experienceCompany}>{exp.company} | {exp.location}</h4>
+                <ul className={styles.experienceList}>
+                  {exp.points.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
-
-          <div className={styles.educationSection}>
-            <h2 className={styles.sectionTitle}>Education</h2>
-            <div className={styles.educationCard}>
-              <h3>Bachelor of Science in Software Engineering</h3>
-              <p>University of Lahore | 2015 – 2019</p>
             </div>
+          ))}
+        </div>
+
+        <div className={styles.educationSection}>
+          <h2 className={styles.sectionTitle}>Education</h2>
+          <div className={styles.educationCard}>
+            <h3>Bachelor of Science in Software Engineering</h3>
+            <p>University of Lahore | 2015 – 2019</p>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+    </Layout>
   );
 };
 

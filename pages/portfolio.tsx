@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
+import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
 const Portfolio = () => {
@@ -49,28 +49,25 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>Portfolio - Muiez Arif</title>
       </Head>
-      <Navbar />
-      <main className={styles.mainContent}>
-        <section className={styles.sectionContainer}>
-          <h1 className={styles.pageTitle}>Portfolio</h1>
-          <div className={styles.projectsGrid}>
-            {projects.map((project, index) => (
-              <div key={index} className={styles.projectCard}>
-                <div className={styles.projectType}>{project.type}</div>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDescription}>{project.description}</p>
-                <p className={styles.projectDetails}>{project.details}</p>
-                <div className={styles.projectTech}>{project.tech}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
+      <section className={styles.sectionContainer}>
+        <h1 className={styles.pageTitle}>Portfolio</h1>
+        <div className={styles.projectsGrid}>
+          {projects.map((project, index) => (
+            <div key={index} className={styles.projectCard}>
+              <div className={styles.projectType}>{project.type}</div>
+              <h3 className={styles.projectTitle}>{project.title}</h3>
+              <p className={styles.projectDescription}>{project.description}</p>
+              <p className={styles.projectDetails}>{project.details}</p>
+              <div className={styles.projectTech}>{project.tech}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </Layout>
   );
 };
 

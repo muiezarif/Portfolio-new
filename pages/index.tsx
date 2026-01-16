@@ -1,8 +1,8 @@
 
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState, useEffect, useRef } from "react";
-import Navbar from "../components/Navbar";
+import { useState } from "react";
+import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -14,161 +14,8 @@ const Home: NextPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      import('three').then((THREE) => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x000000, 0);
-
-        // Create floating geometric shapes
-        const geometries = [
-          new THREE.BoxGeometry(1, 1, 1),
-          new THREE.SphereGeometry(0.7, 32, 32),
-          new THREE.ConeGeometry(0.7, 1.5, 8),
-          new THREE.OctahedronGeometry(0.8),
-          new THREE.TetrahedronGeometry(0.9),
-          new THREE.TorusGeometry(0.6, 0.2, 8, 16),
-          new THREE.DodecahedronGeometry(0.7),
-          new THREE.IcosahedronGeometry(0.8)
-        ];
-
-        const materials = [
-          new THREE.MeshBasicMaterial({ 
-            color: 0x3b82f6, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.4 
-          }),
-          new THREE.MeshBasicMaterial({ 
-            color: 0x8b5cf6, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.3 
-          }),
-          new THREE.MeshBasicMaterial({ 
-            color: 0x06b6d4, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.35 
-          }),
-          new THREE.MeshBasicMaterial({ 
-            color: 0x10b981, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.25 
-          }),
-          new THREE.MeshBasicMaterial({ 
-            color: 0xf59e0b, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.3 
-          }),
-          new THREE.MeshBasicMaterial({ 
-            color: 0xef4444, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.2 
-          })
-        ];
-
-        const meshes: THREE.Mesh[] = [];
-        const meshAnimations: { speed: number, direction: THREE.Vector3, rotationSpeed: THREE.Vector3 }[] = [];
-        
-        for (let i = 0; i < 35; i++) {
-          const geometry = geometries[Math.floor(Math.random() * geometries.length)];
-          const material = materials[Math.floor(Math.random() * materials.length)];
-          const mesh = new THREE.Mesh(geometry, material);
-          
-          mesh.position.x = (Math.random() - 0.5) * 30;
-          mesh.position.y = (Math.random() - 0.5) * 25;
-          mesh.position.z = (Math.random() - 0.5) * 25;
-          
-          mesh.rotation.x = Math.random() * Math.PI * 2;
-          mesh.rotation.y = Math.random() * Math.PI * 2;
-          mesh.rotation.z = Math.random() * Math.PI * 2;
-          
-          scene.add(mesh);
-          meshes.push(mesh);
-          
-          meshAnimations.push({
-            speed: 0.001 + Math.random() * 0.002,
-            direction: new THREE.Vector3(
-              (Math.random() - 0.5) * 0.01,
-              (Math.random() - 0.5) * 0.01,
-              (Math.random() - 0.5) * 0.01
-            ),
-            rotationSpeed: new THREE.Vector3(
-              (Math.random() - 0.5) * 0.02,
-              (Math.random() - 0.5) * 0.02,
-              (Math.random() - 0.5) * 0.02
-            )
-          });
-        }
-
-        camera.position.z = 5;
-
-        const animate = () => {
-          requestAnimationFrame(animate);
-          
-          const time = Date.now() * 0.001;
-          
-          meshes.forEach((mesh, index) => {
-            const animation = meshAnimations[index];
-            
-            // Complex rotation
-            mesh.rotation.x += animation.rotationSpeed.x;
-            mesh.rotation.y += animation.rotationSpeed.y;
-            mesh.rotation.z += animation.rotationSpeed.z;
-            
-            // Floating movement
-            mesh.position.x += Math.sin(time + index * 0.5) * animation.direction.x;
-            mesh.position.y += Math.cos(time + index * 0.3) * animation.direction.y;
-            mesh.position.z += Math.sin(time * 0.7 + index * 0.2) * animation.direction.z;
-            
-            // Boundary checking - wrap around
-            if (mesh.position.x > 15) mesh.position.x = -15;
-            if (mesh.position.x < -15) mesh.position.x = 15;
-            if (mesh.position.y > 12) mesh.position.y = -12;
-            if (mesh.position.y < -12) mesh.position.y = 12;
-            if (mesh.position.z > 12) mesh.position.z = -12;
-            if (mesh.position.z < -12) mesh.position.z = 12;
-            
-            // Pulsing effect
-            const scale = 1 + Math.sin(time * 2 + index) * 0.1;
-            mesh.scale.set(scale, scale, scale);
-          });
-          
-          renderer.render(scene, camera);
-        };
-
-        animate();
-
-        const handleResize = () => {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-          window.removeEventListener('resize', handleResize);
-          renderer.dispose();
-        };
-      });
-    }
-  }, []);
-
-const projects = [
+  const projects = [
     {
       title: "VBC by EC",
       description: "Android native mobile app like Udemy for online education platform",
@@ -245,16 +92,12 @@ const projects = [
   };
 
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>Muiez Arif - Freelance Software Engineer</title>
         <meta name="description" content="Muiez Arif - Freelance Software Engineer with 7+ years experience in Node.js, React.js, Next.js, React Native" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <canvas ref={canvasRef} className={styles.threeCanvas} />
-
-      <Navbar />
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -422,7 +265,7 @@ const projects = [
           </div>
         </div>
       </footer>
-    </div>
+    </Layout>
   );
 };
 
