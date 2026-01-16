@@ -168,7 +168,7 @@ const Home: NextPage = () => {
     }
   }, []);
 
-  const projects = [
+const projects = [
     {
       title: "VBC by EC",
       description: "Android native mobile app like Udemy for online education platform",
@@ -182,10 +182,10 @@ const Home: NextPage = () => {
       type: "Web Platform"
     },
     {
-      title: "My DIGITVL",
-      description: "SMS and email marketing platform where users can create accounts and send marketing campaigns",
-      tech: "Next.js, Node.js",
-      type: "Marketing Platform"
+      title: "Journaly",
+      description: "AI-powered journaling and mood-tracking app",
+      tech: "React Native, OpenAI",
+      type: "Mobile App"
     },
     {
       title: "Courtena",
