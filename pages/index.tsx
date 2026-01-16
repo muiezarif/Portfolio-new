@@ -106,7 +106,7 @@ const Home: NextPage = () => {
           <h1 className={styles.heroTitle}>
             Hi, {"I'm"} <span className={styles.accent}>Muiez Arif</span>
           </h1>
-          <h2 className={styles.heroSubtitle}>Freelance Software Engineer</h2>
+          <h2 className={styles.heroSubtitle}>Software Engineer</h2>
           <p className={styles.heroDescription}>
             With 7+ years of experience building modern web and mobile applications 
             using Node.js, React.js, Next.js, and React Native, Laravel, Django, Python
