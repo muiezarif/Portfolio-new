@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from './Navbar';
 import styles from '../styles/Home.module.css';
 
