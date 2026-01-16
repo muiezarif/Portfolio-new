@@ -104,12 +104,12 @@ const Home: NextPage = () => {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Hi, I'm <span className={styles.accent}>Muiez Arif</span>
+            Hi, {"I'm"} <span className={styles.accent}>Muiez Arif</span>
           </h1>
           <h2 className={styles.heroSubtitle}>Freelance Software Engineer</h2>
           <p className={styles.heroDescription}>
             With 7+ years of experience building modern web and mobile applications 
-            using Node.js, React.js, Next.js, and React Native
+            using Node.js, React.js, Next.js, and React Native, Laravel, Django, Python
           </p>
           <div className={styles.heroButtons}>
             <a href="#projects" className={styles.btnPrimary}>View My Work</a>
@@ -127,7 +127,7 @@ const Home: NextPage = () => {
           <div className={styles.aboutContent}>
             <div className={styles.aboutText}>
               <p>
-                I'm a passionate freelance software engineer with over 7 years of experience 
+                {"I'm"} a passionate freelance software engineer with over 7 years of experience 
                 in developing scalable web and mobile applications. I specialize in modern 
                 JavaScript technologies and have helped numerous clients bring their ideas to life.
               </p>
@@ -172,12 +172,12 @@ const Home: NextPage = () => {
       {/* Contact Section */}
       <section id="contact" className={styles.contact}>
         <div className={styles.sectionContainer}>
-          <h2 className={styles.sectionTitle}>Let's Work Together</h2>
+          <h2 className={styles.sectionTitle}>{"Let's"} Work Together</h2>
           <div className={styles.contactContent}>
             <div className={styles.contactInfo}>
               <h3>Get In Touch</h3>
               <p>
-                Ready to start your next project? I'd love to hear about your ideas 
+                Ready to start your next project? {"I'd"} love to hear about your ideas 
                 and help bring them to life.
               </p>
               <div className={styles.contactMethods}>
