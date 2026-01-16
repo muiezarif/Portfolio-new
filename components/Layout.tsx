@@ -31,8 +31,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.25 })
         ];
 
-        const meshes: THREE.Mesh[] = [];
-        const meshAnimations: { speed: number, direction: THREE.Vector3, rotationSpeed: THREE.Vector3 }[] = [];
+        const meshes: any[] = [];
+        const meshAnimations: { speed: number, direction: any, rotationSpeed: any }[] = [];
         
         for (let i = 0; i < 25; i++) {
           const geometry = geometries[Math.floor(Math.random() * geometries.length)];
