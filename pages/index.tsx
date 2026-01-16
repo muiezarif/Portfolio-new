@@ -146,6 +146,9 @@ const Home: NextPage = () => {
                 <div className={styles.techItem}>React Native</div>
                 <div className={styles.techItem}>JavaScript</div>
                 <div className={styles.techItem}>TypeScript</div>
+                <div className={styles.techItem}>Laravel</div>
+                <div className={styles.techItem}>Django</div>
+                <div className={styles.techItem}>Python</div>
               </div>
             </div>
           </div>
