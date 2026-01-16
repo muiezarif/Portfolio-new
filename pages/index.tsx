@@ -2,6 +2,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState, useEffect, useRef } from "react";
+import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -252,6 +253,8 @@ const Home: NextPage = () => {
       </Head>
 
       <canvas ref={canvasRef} className={styles.threeCanvas} />
+
+      <Navbar />
 
       {/* Hero Section */}
       <section className={styles.hero}>

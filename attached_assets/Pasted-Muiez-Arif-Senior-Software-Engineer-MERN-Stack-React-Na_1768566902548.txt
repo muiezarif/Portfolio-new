@@ -1,0 +1,60 @@
+Muiez Arif 
+Senior Software Engineer | MERN Stack & React Native Expert 
+�
+� Lahore, Pakistan    📍 Muiezarif@gmail.com    📍 +92 337 6101223 
+�
+� www.muiezarif.com 
+Professional Summary 
+Results-driven Software Engineer with over 6 years of experience in designing and developing robust full
+stack web and mobile applications using the MERN stack and React Native. Proven ability to deliver 
+scalable products, manage end-to-end projects, and exceed client expectations across multiple domains 
+including SaaS, eLearning, sports, and creative industries. Seeking challenging remote opportunities 
+where I can contribute to product innovation and engineering excellence. 
+Technical Skills 
+Frontend: React.js, Next.js, Redux, Tailwind CSS, HTML5, CSS3 
+Backend: Node.js, Express.js, MongoDB, REST APIs 
+Mobile: React Native, Expo, Firebase 
+Tools & DevOps: Git, PM2, Postman, Bitbucket, Jira 
+Integrations: Stripe, Google APIs, Firebase Auth, OpenAI APIs, Socket.IO 
+Other: Firebase, GitHub Actions, WebSockets, Agile & SCRUM workflows 
+Professional Experience 
+ MERN Stack Developer 
+Remote — Dashsaudi (www.dashsaudi.com) | Jan 2025 – Present 
+ Maintain and enhance an enterprise-grade platform using React.js, Node.js, and MongoDB. 
+ Refactor and optimize legacy code for performance and scalability. 
+ Implement new features, address client feedback, and ensure production stability. 
+ Collaborate directly with product teams in an agile environment. 
+ Full Stack Engineer (React.js / Next.js / Node.js) 
+Freelance – Upwork & Fiverr | Mar 2020 – Dec 2024 
+ Built and maintain Digitvl.com for independent artists. 
+ Integrated Stripe for subscriptions and one-time payouts. 
+ Developed and deployed a kids’ sports learning app for a German client. 
+ Created full flow diagrams, use cases, and project architecture independently. 
+ Built admin dashboards, CRMs, booking systems, and more using MERN stack. 
+ Android Engineer (Java/Kotlin) 
+Extreme Commerce, Lahore | Oct 2020 – Mar 2023 
+ Developed and maintained E-Learning platform Android App. 
+ Managed app updates, version control, and technical support. 
+ Wrote technical documentation and handled client-side integration. 
+ Android Developer (Java/Kotlin) 
+Suave Solution | Sep 2019 – Apr 2020 
+ Worked with MVVM, Dagger2, RxJava, and Retrofit. 
+ Built and maintained scalable Android applications. 
+ Improved UI/UX, debugging, and versioning workflows. 
+ Mobile & Web Developer (PHP / Android) 
+Freelance – Upwork & Fiverr | Aug 2017 – Sep 2018 
+ Created Laravel-based admin panels, messaging/email modules, and mobile apps. 
+ Integrated Firebase, Google Maps, OpenTok SDK. 
+ Redesigned a Japanese online bookstore’s mobile platform. 
+Education 
+ Bachelor of Science in Software Engineering 
+University of Lahore | 2015 – 2019 
+https://uol.edu.pk 
+Languages 
+English: B2–C1 (Professional working proficiency) 
+Urdu: Native 
+Highlights & Notables 
+ Created Journaly, an AI-powered journaling and mood-tracking app (React Native + OpenAI). 
+ Developed Sports Booking SaaS platform for a previous Saudi client (MERN Stack). 
+ Maintained 100% 5-star ratings across freelance platforms. 
+ Actively pursuing remote roles with a focus on performance, maintainability, and product growth.
